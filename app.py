@@ -12,10 +12,13 @@ app.config['UPLOAD_FOLDER']=pic_folder
 
 @app.route('/')
 def main():
-    pic1=os.path.join(app.config['UPLOAD_FOLDER'],'maruti-suzuki.jpg')
-    pic2=os.path.join(app.config['UPLOAD_FOLDER'],'hyundai.jpg')
+    pic0=os.path.join(app.config['UPLOAD_FOLDER'],'bg2.jpg')
+    pic1=os.path.join(app.config['UPLOAD_FOLDER'],'suzuki.png')
+    pic2=os.path.join(app.config['UPLOAD_FOLDER'],'hyundai.png')
+    pic3=os.path.join(app.config['UPLOAD_FOLDER'],'mahindra.png')
+    pic4=os.path.join(app.config['UPLOAD_FOLDER'],'toyota.png')
 
-    return(flask.render_template('home_page.html',maruti_image=pic1,hyundai_image=pic2))
+    return(flask.render_template('home_page.html',maruti_image=pic1,hyundai_image=pic2,mahindra=pic3,toyota=pic4,bg=pic0))
 
 @app.route('/swift',methods=['GET','POST'])
 def swift():
@@ -47,7 +50,7 @@ def swift():
        input_variables=pd.DataFrame([[year,6.5,Kms_Driven,Fuel_type, Seller_type,Transmission, Owners]],columns=['Year','Present_Price','Kms_Driven','Fuel_Type','Seller_Type','Transmission','Owner'],dtype=float)
        prediction = model.predict(input_variables)[0]
       
-       return (flask.render_template('swift.html',result=prediction))
+       return (flask.render_template('swift.html',result=round(prediction,5)))
 
     return(flask.render_template('swift.html'))
 

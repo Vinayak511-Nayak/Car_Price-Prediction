@@ -5,7 +5,7 @@ import pickle
 import pandas as pd
 with open(f'model/car_price_prediction.sav', 'rb') as f:
     model = pickle.load(f)
-app = flask.Flask(__name__, template_folder='templates')
+app = Flask(__name__)
 
 pic_folder=os.path.join('static')
 app.config['UPLOAD_FOLDER']=pic_folder

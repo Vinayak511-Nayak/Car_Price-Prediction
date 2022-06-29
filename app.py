@@ -3,6 +3,7 @@ from flask import Flask,render_template,request
 import os
 import pickle
 import pandas as pd
+from collections.abc import Mapping
 with open(f'model/car_price_prediction.sav', 'rb') as f:
     model = pickle.load(f)
 app = Flask(__name__)
